@@ -86,4 +86,4 @@ def simulate_experiment(num_participants, trials_per_participant):
 
 if __name__ == "__main__":
     # run_experiment(50)     # manual data entry
-    simulate_experiment(40, 20)     # automated dataset
+    # simulate_experiment(40, 20)     # automated dataset
