@@ -1,1 +1,0 @@
-# stroop-reaction-time-experiment
