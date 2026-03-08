@@ -3,7 +3,7 @@ experiment_words = ["red", "blue", "green", "yellow"]
 
 def determine_condition(word, color):
     """
-    Determines whether a Stroop Trial is congruent or incongruent.
+    Determines whether a Stroop trial is congruent or incongruent.
 
     A trial is congruent when the meaning of the word matches the display
     color (e.g. "red" as red). Otherwise, it's considered incongruent.
@@ -38,7 +38,7 @@ def is_correct_response(response, color):
 
 def generate_trial():
     """
-    Generates random Stroop Trial stimulus.
+    Generates random Stroop trial stimulus.
 
     Trials consist of randomly selected word & display color.
     Trial condition is determined based on determine_condition(word, color).
@@ -59,7 +59,7 @@ def generate_trial():
 
 def record_trial_result(participant, word, color, condition, response, reaction_time):
     """
-    Records the results of completed Stroop Trial.
+    Records the results of completed Stroop trial.
 
     :param participant: participant ID, as a str.
     :param word: Stimulus shown, as str.
