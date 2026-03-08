@@ -7,11 +7,11 @@ def is_correct_response(response, color):
 def generate_trial():
     pass
 
-def record_trial_results(participant, word, color, condition, response, reaction_time):
+def record_trial_result(participant, word, color, condition, response, reaction_time):
     pass
 
 def save_results_to_json(results, filepath):
     pass
 
-def calculate_average_reaction_time(results):
+def calculate_average_reaction_times(results):
     pass

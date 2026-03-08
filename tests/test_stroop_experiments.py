@@ -1,5 +1,5 @@
-import stroop_experiments
-import pytest
+from stroop_experiments import *
+import pytest, json
 
 def test_determine_condition():
     """
@@ -7,7 +7,14 @@ def test_determine_condition():
         - "congruent" if the word meaning matches the displayed color
         - "incongruent" if the word meaning differs from the display color
     """
-    pass
+    assert determine_condition("red", "red") == "congruent"
+    assert determine_condition("blue", "blue") == "congruent"
+
+    with pytest.raises(TypeError):
+        determine_condition(1, "red")
+    with pytest.raises(TypeError):
+        determine_condition("blue", 1)
+
 
 def test_is_correct_response():
     """
@@ -15,7 +22,12 @@ def test_is_correct_response():
         - True if the participant's response matches the displayed color
         - else: False
     """
-    pass
+
+    assert is_correct_response("red", "red") == True
+    assert is_correct_response("red", "blue") == False
+
+    with pytest.raises(TypeError):
+        is_correct_response(1, "red")
 
 def test_generate_trial():
     """
@@ -26,7 +38,16 @@ def test_generate_trial():
         - color: display color
         - condition: "congruent" or "incongruent"
     """
-    pass
+
+    trial = generate_trial()
+
+    assert trial == type(dict)
+    assert "word" in trial
+    assert "color" in trial
+    assert "condition" in trial
+
+    assert trial["condition"] in ["congruent", "incongruent"]
+
 
 def test_record_trial_result():
     """
@@ -40,7 +61,16 @@ def test_record_trial_result():
         - reaction_time in seconds
     :return: result as a dict
     """
-    pass
+
+    result = record_trial_result("P01", "red", "blue", "incongruent", "blue", 0.75)
+
+    assert result["participant"] == "P01"
+    assert result["word"] == "red"
+    assert result["color"] == "blue"
+    assert result["condition"] == "incongruent"
+    assert result["response"] == "blue"
+    assert result["reaction_time"] == 0.75
+
 
 def test_save_results_to_json():
     """
@@ -48,11 +78,34 @@ def test_save_results_to_json():
 
     saved file should contain list of trial result dicts
     """
-    pass
+
+    results = [{"word": "red"}]
+
+    filepath = "test/test_saved_json_file.json"
+
+    save_results_to_json(results, filepath)
+
+    with open(filepath) as f:
+        data = json.load(f)
+
+    assert data == results
+
 
 def test_calculate_average_reaction_times():
     """
     calculate_average_reaction_times(results) computes average reaction time for both congruent & incongruent trials
     :return: dict containing both averages
     """
-    pass
+
+    data = [{"condition": "congruent", "reaction_time": 0.5}, {"condition": "congruent", "reaction_time": 0.9},
+            {"condition": "incongruent", "reaction_time": 1.2}, {"condition": "incongruent", "reaction_time": 1.7}]
+
+    result = calculate_average_reaction_times(data)
+
+    assert result["congruent"] == 0.7
+    assert result["incongruent"] == 1.45
+
+    with pytest.raises(ValueError):
+        calculate_average_reaction_times([])
+    with pytest.raises(ValueError):
+        calculate_average_reaction_times([{}])
