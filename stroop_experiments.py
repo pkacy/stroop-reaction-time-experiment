@@ -71,6 +71,13 @@ def record_trial_result(participant, word, color, condition, response, reaction_
     :param reaction_time: Time taken to respond in seconds, as a float.
     :return: dict representing the full trial result
     """
+
+    correct = is_correct_response(response, color)
+
+    return {"participant": participant, "word": word, "color": color,
+            "condition": condition, "response": response, "correct": correct,
+            "reaction_time": reaction_time}
+
     raise NotImplementedError("Not yet implemented")
 
 
