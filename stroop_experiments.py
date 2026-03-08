@@ -1,3 +1,6 @@
+import random, json
+words = ["red", "blue", "green", "yellow"]
+
 def determine_condition(word, color):
     """
     Determines whether a Stroop Trial is congruent or incongruent.
@@ -10,7 +13,11 @@ def determine_condition(word, color):
     :return: "congruent" or "incongruent", as strings.
     :raises: Type error if either param is not a string.
     """
-    pass
+
+    if type(word) != str or type(color) != str:
+        raise TypeError("Arguments must be strings")
+
+    return "congruent" if word == color else "incongruent"
 
 
 def is_correct_response(response, color):
@@ -22,7 +29,7 @@ def is_correct_response(response, color):
     :return: bool True/False
     :raises: TypeError if either param isn't a str.
     """
-    pass
+    raise NotImplementedError("Not yet implemented")
 
 
 def generate_trial():
@@ -34,7 +41,7 @@ def generate_trial():
 
     :return: dict containing trial stimulus with keys word (str), color (str), and condition (str).
     """
-    pass
+    raise NotImplementedError("Not yet implemented")
 
 
 def record_trial_result(participant, word, color, condition, response, reaction_time):
@@ -49,7 +56,7 @@ def record_trial_result(participant, word, color, condition, response, reaction_
     :param reaction_time: Time taken to respond in seconds, as a float.
     :return: dict representing the full trial result
     """
-    pass
+    raise NotImplementedError("Not yet implemented")
 
 
 def calculate_average_reaction_times(results):
@@ -60,7 +67,7 @@ def calculate_average_reaction_times(results):
     :return: dict containing average reaction times as floats
     :raises: ValueError if list is empty OR if dict in list is empty
     """
-    pass
+    raise NotImplementedError("Not yet implemented")
 
 
 def save_results_to_json(results, filepath):
@@ -69,4 +76,4 @@ def save_results_to_json(results, filepath):
     :param results: list of dicts containing trial results
     :param filepath: where to write JSON file
 `    """
-    pass
+    raise NotImplementedError("Not yet implemented")
