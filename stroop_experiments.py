@@ -1,5 +1,5 @@
 import random, json
-words = ["red", "blue", "green", "yellow"]
+experiment_words = ["red", "blue", "green", "yellow"]
 
 def determine_condition(word, color):
     """
@@ -29,7 +29,11 @@ def is_correct_response(response, color):
     :return: bool True/False
     :raises: TypeError if either param isn't a str.
     """
-    raise NotImplementedError("Not yet implemented")
+
+    if type(response) != str or type(color) != str:
+        raise TypeError("Arguments must be strings")
+
+    return response == color
 
 
 def generate_trial():
@@ -41,6 +45,17 @@ def generate_trial():
 
     :return: dict containing trial stimulus with keys word (str), color (str), and condition (str).
     """
+
+    word_index = random.randrange(len(experiment_words))
+    color_index = random.randrange(len(experiment_words))
+
+    word = experiment_words[word_index]
+    color = experiment_words[color_index]
+
+    condition = determine_condition(word, color)
+
+    return {"word": word, "color": color, "condition": condition}
+
     raise NotImplementedError("Not yet implemented")
 
 

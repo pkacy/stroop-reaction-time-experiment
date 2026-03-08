@@ -41,7 +41,7 @@ def test_generate_trial():
 
     trial = generate_trial()
 
-    assert trial == type(dict)
+    assert type(trial) == dict
     assert "word" in trial
     assert "color" in trial
     assert "condition" in trial
