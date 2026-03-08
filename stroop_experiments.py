@@ -89,6 +89,25 @@ def calculate_average_reaction_times(results):
     :return: dict containing average reaction times as floats
     :raises: ValueError if list is empty OR if dict in list is empty
     """
+
+    if len(results) < 1:
+        raise ValueError("Results cannot be empty")
+
+    congruent = []
+    incongruent = []
+
+    for trial in results:
+        if len(trial) < 1:
+            raise ValueError("Trial dict cannot be empty")
+
+        if trial["condition"] == "congruent":
+            congruent.append(trial["reaction_time"])
+        else:
+            incongruent.append(trial["reaction_time"])
+
+    return {"congruent": sum(congruent)/len(congruent),
+            "incongruent": sum(incongruent)/len(incongruent)}
+
     raise NotImplementedError("Not yet implemented")
 
 
