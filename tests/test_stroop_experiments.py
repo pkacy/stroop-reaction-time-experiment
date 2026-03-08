@@ -3,7 +3,7 @@ import pytest, json
 
 def test_determine_condition():
     """
-    determine_codition(word, color) should return:
+    determine_condition(word, color) should return:
         - "congruent" if the word meaning matches the displayed color
         - "incongruent" if the word meaning differs from the display color
     """
@@ -72,25 +72,6 @@ def test_record_trial_result():
     assert result["reaction_time"] == 0.75
 
 
-def test_save_results_to_json():
-    """
-    save_results_to_json(results, filepath) should write experiment results to JSON file at given filepath
-
-    saved file should contain list of trial result dicts
-    """
-
-    results = [{"word": "red"}]
-
-    filepath = "test/test_saved_json_file.json"
-
-    save_results_to_json(results, filepath)
-
-    with open(filepath) as f:
-        data = json.load(f)
-
-    assert data == results
-
-
 def test_calculate_average_reaction_times():
     """
     calculate_average_reaction_times(results) computes average reaction time for both congruent & incongruent trials
@@ -109,3 +90,22 @@ def test_calculate_average_reaction_times():
         calculate_average_reaction_times([])
     with pytest.raises(ValueError):
         calculate_average_reaction_times([{}])
+
+
+def test_save_results_to_json():
+    """
+    save_results_to_json(results, filepath) should write experiment results to JSON file at given filepath
+
+    saved file should contain list of trial result dicts
+    """
+
+    results = [{"word": "red"}]
+
+    filepath = "test/test_saved_json_file.json"
+
+    save_results_to_json(results, filepath)
+
+    with open(filepath) as f:
+        data = json.load(f)
+
+    assert data == results

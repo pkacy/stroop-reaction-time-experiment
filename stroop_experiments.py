@@ -1,17 +1,72 @@
 def determine_condition(word, color):
+    """
+    Determines whether a Stroop Trial is congruent or incongruent.
+
+    A trial is congruent when the meaning of the word matches the display
+    color (e.g. "red" as red). Otherwise, it's considered incongruent.
+
+    :param word: Text stimulus presented, as a string.
+    :param color: Display color of word, as a string.
+    :return: "congruent" or "incongruent", as strings.
+    :raises: Type error if either param is not a string.
+    """
     pass
+
 
 def is_correct_response(response, color):
+    """
+    Determines whether a participant responded with the correct color.
+
+    :param response: Participant's typed response, as a str.
+    :param color: Correct display of color, as a str.
+    :return: bool True/False
+    :raises: TypeError if either param isn't a str.
+    """
     pass
+
 
 def generate_trial():
+    """
+    Generates random Stroop Trial stimulus.
+
+    Trials consist of randomly selected word & display color.
+    Trial condition is determined based on determine_condition(word, color).
+
+    :return: dict containing trial stimulus with keys word (str), color (str), and condition (str).
+    """
     pass
+
 
 def record_trial_result(participant, word, color, condition, response, reaction_time):
+    """
+    Records the results of completed Stroop Trial.
+
+    :param participant: participant ID, as a str.
+    :param word: Stimulus shown, as str.
+    :param color: Display color, as str.
+    :param condition: "congruent"/"incongruent", as str.
+    :param response: Participant's typed response, as str.
+    :param reaction_time: Time taken to respond in seconds, as a float.
+    :return: dict representing the full trial result
+    """
     pass
 
-def save_results_to_json(results, filepath):
-    pass
 
 def calculate_average_reaction_times(results):
+    """
+    Computes average reaction times for congruent & incongruent trials.
+
+    :param results: list of dicts containing keys "condition" and "reaction_time"
+    :return: dict containing average reaction times as floats
+    :raises: ValueError if list is empty OR if dict in list is empty
+    """
+    pass
+
+
+def save_results_to_json(results, filepath):
+    """
+    Saves experiment results to JSON file.
+    :param results: list of dicts containing trial results
+    :param filepath: where to write JSON file
+`    """
     pass
