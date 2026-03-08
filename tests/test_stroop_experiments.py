@@ -101,7 +101,7 @@ def test_save_results_to_json():
 
     results = [{"word": "red"}]
 
-    filepath = "test/test_saved_json_file.json"
+    filepath = "tests/test_saved_json_file.json"
 
     save_results_to_json(results, filepath)
 

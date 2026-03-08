@@ -56,8 +56,6 @@ def generate_trial():
 
     return {"word": word, "color": color, "condition": condition}
 
-    raise NotImplementedError("Not yet implemented")
-
 
 def record_trial_result(participant, word, color, condition, response, reaction_time):
     """
@@ -77,8 +75,6 @@ def record_trial_result(participant, word, color, condition, response, reaction_
     return {"participant": participant, "word": word, "color": color,
             "condition": condition, "response": response, "correct": correct,
             "reaction_time": reaction_time}
-
-    raise NotImplementedError("Not yet implemented")
 
 
 def calculate_average_reaction_times(results):
@@ -108,8 +104,6 @@ def calculate_average_reaction_times(results):
     return {"congruent": sum(congruent)/len(congruent),
             "incongruent": sum(incongruent)/len(incongruent)}
 
-    raise NotImplementedError("Not yet implemented")
-
 
 def save_results_to_json(results, filepath):
     """
@@ -117,4 +111,6 @@ def save_results_to_json(results, filepath):
     :param results: list of dicts containing trial results
     :param filepath: where to write JSON file
 `    """
-    raise NotImplementedError("Not yet implemented")
+
+    with open(filepath, "w") as f:
+        json.dump(results, f)
